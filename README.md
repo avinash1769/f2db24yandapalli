@@ -1,7 +1,2 @@
-# f2wb24yandapalli
-https://f2wb24yandapalli.onrender.com
-class diamond {
-        String diamond_name;
-        var diamond_type;
-        number diamond_size;
-      }
+# f2db24yandapalli
+https://f2db24yandapalli.onrender.com
