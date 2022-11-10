@@ -23,16 +23,31 @@ exports.diamond_view_all_Page = async function(req, res) {
         res.send(`{"error": ${err}}`); 
     }   
 }; 
+// Handle diamond create on POST. 
+exports.diamond_create_post = async function(req, res) { 
+    console.log(req.body) 
+    let document = new diamond(); 
+    // We are looking for a body, since POST does not have query parameters. 
+    // Even though bodies can be in many different formats, we will be picky 
+    // and require that it be a json object 
+    // {"diamond_name":"purelyheart","diamond_size":4.9,"diamond_type":"llaVII"} 
+    document.diamond_name = req.body.diamond_name; 
+    document.diamond_size = req.body.diamond_size; 
+    document.diamond_type = req.body.diamond_type; 
+    try{ 
+        let result = await document.save(); 
+        res.send(result); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+}; 
 // for a specific diamond. 
 exports.diamond_detail = function(req, res) { 
     res.send('NOT IMPLEMENTED: diamond detail: ' + req.params.id); 
 }; 
- 
-// Handle diamond create on POST. 
-exports.diamond_create_post = function(req, res) { 
-    res.send('NOT IMPLEMENTED: diamond create POST'); 
-}; 
- 
+
 // Handle diamond delete form on DELETE. 
 exports.diamond_delete = function(req, res) { 
     res.send('NOT IMPLEMENTED: diamond delete DELETE ' + req.params.id); 

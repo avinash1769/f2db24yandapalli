@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  - var result = [{"diamond_name":"kohinoor","diamond_size":3,"diamond_type":"lla"},{"diamond_name":"Emerald","diamond_size":7,"diamond_type":"mineral beryl"},{"diamond_name":"Hope","diamond_size":9,"diamond_type":"typellb"}]
+  - var result = results 
   div.container-fluid
      div.row
         each item,index in result
