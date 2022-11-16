@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 const diamondSchema = mongoose.Schema({ 
  diamond_type: String,
  diamond_name: String, 
- diamond_size: String
+ diamond_size: Number
  
 }) 
  

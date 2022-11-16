@@ -1,0 +1,43 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let diamondid = toShow._id 
+  - let diamond_type = toShow.diamond_type 
+  - let diamond_name = toShow.diamond_name 
+  - let diamond_size = toShow.diamond_size 
+   
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{diamondid} 
+  - let actionid = "/resource/diamond/" + diamondid 
+  form(id='DiamondForm', action= actionid, method="PUT") 
+    div.form-group 
+        label.diamondAttr(for='diamond_type') Diamond type 
+        input#diamond_type(type='text', name='diamond_type', value= diamond_type ) 
+    div.form-group 
+        label.diamondAttr(for='diamond_name') Diamond Name 
+        input#diamond_name(type='text', name='diamond_name', value= diamond_name ) 
+    div.form-group 
+        label.diamondAttr(for='diamond_size') Diamond Size 
+        input#diamond_size(type='number', name='diamond_size', value= diamond_size ) 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['DiamondForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Update succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Update failed " + error ) 
+      }); 
+    });

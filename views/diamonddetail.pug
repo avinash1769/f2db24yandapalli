@@ -1,0 +1,22 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let diamondid = toShow._id 
+  - let diamond_type = toShow.diamond_type 
+  - let diamond_name = toShow.diamond_name
+  - let diamond_size = toShow.diamond_size
+  div 
+    div.row 
+      div(class='diamondAttr mr-3') diamond ID is: 
+      div #{diamondid} 
+    div.row 
+      div(class='diamondAttr mr-3') diamond diamond_type is: 
+      div #{diamond_type} 
+    div.row 
+      div(class='diamondAttr mr-3') diamond diamond_name is: 
+      div #{diamond_name} 
+    div.row 
+      div(class='diamondAttr mr-3') diamond diamond_size is: 
+      div #{diamond_size} 

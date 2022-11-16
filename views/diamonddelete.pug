@@ -1,0 +1,54 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  if (toShow == null) 
+    h2 No instance to delete 
+  else 
+    - let diamondid = toShow._id 
+    - let diamond_type= toShow.diamond_type
+    - let diamonddiamond_name = toShow.diamond_name 
+    - let diamonddiamond_size = toShow.diamond_size 
+    - let actionid = "/resource/diamond/" + diamondid
+
+    script let actionid = "#{actionid}" 
+    div 
+      div.row 
+        div(class='diamondAttr mr-3') diamond ID is: 
+        div #{diamondid} 
+      div.row 
+        div(class='diamondAttr mr-3') diamond_type is: 
+        div #{diamond_type} 
+      div.row 
+        div(class='diamondAttr mr-3') diamond_name is: 
+        div #{diamonddiamond_name} 
+      div.row 
+        div(class='diamondAttr mr-3') diamond_size is: 
+        div #{diamonddiamond_size} 
+ 
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+ 
+  script. 
+    function cancel() { 
+      // Go back to the home page for the diamond collection 
+      window.location.href='/diamond' 
+    } 
+  script. 
+    function deleteOnid() { 
+      console.log("starting delete") 
+      // delete first 
+      fetch(actionid, { 
+        method: 'DELETE'      //Dont need a body for the delete 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Delete succeded") 
+        window.location.href='/diamond' 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Delete failed " + error ) 
+      }); 
+    }
