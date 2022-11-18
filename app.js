@@ -28,15 +28,6 @@ var usersRouter = require('./routes/users');
 var diamondRouter = require('./routes/diamond');
 var gridbuildRouter = require('./routes/gridbuild');
 var selectorRouter = require('./routes/selector');
-
-app.use(require('express-session')({ 
-  secret: 'keyboard cat', 
-  resave: false, 
-  saveUninitialized: false 
-})); 
-app.use(passport.initialize()); 
-app.use(passport.session()); 
- 
 var resourceRouter = require('./routes/resource');
 
 // passport config 
@@ -67,6 +58,14 @@ app.use('/users', usersRouter);
 app.use('/diamond', diamondRouter);
 app.use('/gridbuild', gridbuildRouter);
 app.use('/selector', selectorRouter);
+
+app.use(require('express-session')({ 
+  secret: 'keyboard cat', 
+  resave: false, 
+  saveUninitialized: false 
+})); 
+app.use(passport.initialize()); 
+app.use(passport.session()); 
 app.use('/resource', resourceRouter);
 
 // catch 404 and forward to error handler
