@@ -16,7 +16,7 @@ router.get('/create', diamond_controlers.diamond_create_Page);
 router.get('/update', diamond_controlers.diamond_update_Page); 
 /* GET delete costume page */ 
 router.get('/delete', diamond_controlers.diamond_delete_Page); 
-
+router.get('/diamond/:id', diamond_controlers.diamond_detail);
 module.exports = router;
  
 
